@@ -1,0 +1,35 @@
+{
+  "name": "apicall",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xdevelsistemas/apiCall.git"
+  },
+  "keywords": [
+    "api",
+    "apiCall",
+    "apicall"
+  ],
+  "author": "Clayton Santos <clayton@xdevel.com.br>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xdevelsistemas/apiCall/issues"
+  },
+  "contributors": [
+    "David Vilaça <david@xdevel.com.br>"
+  ],
+  "engines": {
+    "node": ">= 4.2.0"
+  },
+  "homepage": "https://github.com/xdevelsistemas/apiCall#readme",
+  "dependencies": {
+    "extend": "^3.0.0",
+    "request-promise": "^2.0.1",
+    "string-format": "^0.5.0"
+  }
+}
