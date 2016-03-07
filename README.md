@@ -47,23 +47,23 @@ Authentication token bearer example:
 ```js
 var prefix = "";
 var endpoint = "http://localhost:3000";
-var apitoken = {bearer: "iLoveScothScoth"};
-var api = require("apicall")(prefix, endpoint, apitoken); //Authentication is configured with "Bearer iLoveScothScoth"
+var apiAuth = {bearer: "iLoveScothScoth"};
+var api = require("apicall")(prefix, endpoint, apiAuth); //Authentication is configured with "Bearer iLoveScothScoth"
 ```
 
 Data in the url or query parameter:
 ```js
 var prefix = "";
 var endpoint = "http://localhost:3000";
-var apitoken = {bearer: "iLoveScothScoth"};
-var api = require("apicall")(prefix, endpoint, apitoken); //Authentication is configured with "Bearer iLoveScothScoth"
+var apiAuth = {bearer: "iLoveScothScoth"};
+var api = require("apicall")(prefix, endpoint, apiAuth); //Authentication is configured with "Bearer iLoveScothScoth"
 
 var data = {
     id: '1231231231231'
 };
 
 // Example 1
-var test = api.apiCall('users/{token}', api.method.GET, data);
+var test = api.apiCall('users/{id}', api.method.GET, data);
 test
     .then(function(result){
         console.log(result.status);
@@ -74,7 +74,7 @@ test
     });
         
 // Example 2
-var test2 = api.apiCall('users?token={token}', api.method.GET, data);
+var test2 = api.apiCall('users?id={id}', api.method.GET, data); // "?id={id}" {id} is the data object key
 test2
     .then(function(result){
         console.log(result.status);
