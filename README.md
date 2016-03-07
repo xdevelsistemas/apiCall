@@ -6,7 +6,7 @@ Service [node](http://nodejs.org) to facilitate the request promise front end to
 Simple example:
 ```js
 var body = {user: 'user', password: 'pass'};
-var api = require("apicall")("Your API_PREFIX","Your API_ENDPOINT","Your API_TOKEN");
+var api = require("apicall")("Your API_PREFIX","Your API_ENDPOINT",{bearer: "Your API_TOKEN"});
 var test = api.apiCall("/", api.method.POST, body); //Retorna uma request promise
 ```
 
@@ -14,7 +14,7 @@ var test = api.apiCall("/", api.method.POST, body); //Retorna uma request promis
 GET Exemple:
 ```js
 var body = null;
-var api = require("apicall")("","http://httpbin.org","");
+var api = require("apicall")("", "http://httpbin.org", null);
 var test = api.apiCall("/", api.method.GET, body);
 test
     .then(function(data){
@@ -30,7 +30,7 @@ test
 
 Method's:
 ```js
-var api = require("apicall")("","http://httpbin.org","");
+var api = require("apicall")("","http://httpbin.org",null);
 
 //GET
 api.method.GET // Returns: 'GET'
@@ -47,23 +47,23 @@ Authentication token bearer example:
 ```js
 var prefix = "";
 var endpoint = "http://localhost:3000";
-var apitoken = "iLoveScothScoth";
-var api = require("apicall")(prefix, endpoint, apitoken); //Authentication is configured with "Bearer iLoveScothScoth"
+var apiAuth = {bearer: "iLoveScothScoth"};
+var api = require("apicall")(prefix, endpoint, apiAuth); //Authentication is configured with "Bearer iLoveScothScoth"
 ```
 
 Data in the url or query parameter:
 ```js
 var prefix = "";
 var endpoint = "http://localhost:3000";
-var apitoken = "iLoveScothScoth";
-var api = require("apicall")(prefix, endpoint, apitoken); //Authentication is configured with "Bearer iLoveScothScoth"
+var apiAuth = {bearer: "iLoveScothScoth"};
+var api = require("apicall")(prefix, endpoint, apiAuth); //Authentication is configured with "Bearer iLoveScothScoth"
 
 var data = {
     id: '1231231231231'
 };
 
 // Example 1
-var test = api.apiCall('users/{token}', api.method.GET, data);
+var test = api.apiCall('users/{id}', api.method.GET, data);
 test
     .then(function(result){
         console.log(result.status);
@@ -74,7 +74,7 @@ test
     });
         
 // Example 2
-var test2 = api.apiCall('users?token={token}', api.method.GET, data);
+var test2 = api.apiCall('users?id={id}', api.method.GET, data); // "?id={id}" {id} is the data object key
 test2
     .then(function(result){
         console.log(result.status);
@@ -88,7 +88,7 @@ test2
 
 Catching errors
 ```js
-var api = require("apicall")("","http://httpbin.org","");
+var api = require("apicall")("","http://httpbin.org", null);
 api.apiGetErr(error,res);
 ```
 
@@ -97,7 +97,7 @@ Nodejs app example:
 ```js
 var express = require('express');
 var app = express();
-var api = require("apicall")("","http://httpbin.org","");
+var api = require("apicall")("","http://httpbin.org", null);
  
 app.get('/', function (req, res) {
     api.apiCall('/post', api.method.POST, {html: "<html><body><h1>Hello World</h1></body></html>"})

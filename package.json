@@ -1,10 +1,10 @@
 {
   "name": "apicall",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm install; mocha test"
+    "test": "npm install --dev; mocha -t 10000 test"
   },
   "repository": {
     "type": "git",

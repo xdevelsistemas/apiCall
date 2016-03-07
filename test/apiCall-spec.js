@@ -10,7 +10,7 @@
     var chai = require('chai');
     var should = chai.should();
     var expect = chai.expect;
-    var api = require('../lib/apiCall')("", "http://httpbin.org", "");
+    var api = require('../lib/apiCall')("", "http://httpbin.org", null);
 
     describe('ApiCall', function () {
 
