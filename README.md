@@ -7,7 +7,7 @@ Simple example:
 ```js
 var body = {user: 'user', password: 'pass'};
 var api = require("apicall")("Your API_PREFIX","Your API_ENDPOINT",{bearer: "Your API_TOKEN"});
-var test = api.apiCall("/", api.method.POST, body); //Retorna uma request promise
+var test = api.apiCall("/", api.method.POST, body); //Returns a request promise
 ```
 
 
