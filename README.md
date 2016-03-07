@@ -33,13 +33,13 @@ Method's:
 var api = require("apicall")("","http://httpbin.org","");
 
 //GET
-api.method.GET // Returns: 'get'
+api.method.GET // Returns: 'GET'
 //POST
-api.method.POST // Returns: 'post'
+api.method.POST // Returns: 'POST'
 //PUT
-api.method.PUT // Returns: 'put'
+api.method.PUT // Returns: 'PUT'
 //DELETE
-api.method.DELETE // Returns: 'delete'
+api.method.DELETE // Returns: 'DELETE'
 
 ```
 
@@ -106,7 +106,7 @@ app.get('/', function (req, res) {
             res.status(dataApi.status).send(htmlReceived);
         })
         .catch(function(errorApi){
-            api.apiGetErr(error,res);
+            api.apiGetErr(errorApi,res);
         })
 })
  
