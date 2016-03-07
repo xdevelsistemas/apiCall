@@ -6,7 +6,7 @@ Service [node](http://nodejs.org) to facilitate the request promise front end to
 Simple example:
 ```js
 var body = {user: 'user', password: 'pass'};
-var api = require("apicall")("Your API_PREFIX","Your API_ENDPOINT","Your API_TOKEN");
+var api = require("apicall")("Your API_PREFIX","Your API_ENDPOINT",{bearer: "Your API_TOKEN"});
 var test = api.apiCall("/", api.method.POST, body); //Retorna uma request promise
 ```
 
@@ -14,7 +14,7 @@ var test = api.apiCall("/", api.method.POST, body); //Retorna uma request promis
 GET Exemple:
 ```js
 var body = null;
-var api = require("apicall")("","http://httpbin.org","");
+var api = require("apicall")("", "http://httpbin.org", null);
 var test = api.apiCall("/", api.method.GET, body);
 test
     .then(function(data){
@@ -30,7 +30,7 @@ test
 
 Method's:
 ```js
-var api = require("apicall")("","http://httpbin.org","");
+var api = require("apicall")("","http://httpbin.org",null);
 
 //GET
 api.method.GET // Returns: 'GET'
@@ -47,7 +47,7 @@ Authentication token bearer example:
 ```js
 var prefix = "";
 var endpoint = "http://localhost:3000";
-var apitoken = "iLoveScothScoth";
+var apitoken = {bearer: "iLoveScothScoth"};
 var api = require("apicall")(prefix, endpoint, apitoken); //Authentication is configured with "Bearer iLoveScothScoth"
 ```
 
@@ -55,7 +55,7 @@ Data in the url or query parameter:
 ```js
 var prefix = "";
 var endpoint = "http://localhost:3000";
-var apitoken = "iLoveScothScoth";
+var apitoken = {bearer: "iLoveScothScoth"};
 var api = require("apicall")(prefix, endpoint, apitoken); //Authentication is configured with "Bearer iLoveScothScoth"
 
 var data = {
@@ -88,7 +88,7 @@ test2
 
 Catching errors
 ```js
-var api = require("apicall")("","http://httpbin.org","");
+var api = require("apicall")("","http://httpbin.org", null);
 api.apiGetErr(error,res);
 ```
 
@@ -97,7 +97,7 @@ Nodejs app example:
 ```js
 var express = require('express');
 var app = express();
-var api = require("apicall")("","http://httpbin.org","");
+var api = require("apicall")("","http://httpbin.org", null);
  
 app.get('/', function (req, res) {
     api.apiCall('/post', api.method.POST, {html: "<html><body><h1>Hello World</h1></body></html>"})
